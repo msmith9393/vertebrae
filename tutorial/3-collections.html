@@ -20,8 +20,6 @@
  * Backbone gives us some conveniences, such as propagating events,
  * that makes them a breeze to use. I'll start you off both model and view: */
 var Comment = Backbone.Model.extend({
-  /* This is purposely different from the previous steps.
-   * Make sure to do those first (!!!) and then check here for new patterns. */
 
   initialize: function(message, votes) {
     this.set('message', message);
@@ -41,6 +39,7 @@ var Comment = Backbone.Model.extend({
     }
   }
 });
+
 var CommentView = Backbone.View.extend({
   initialize: function() {
     this.model.on('change:votes', this.render, this);
@@ -107,10 +106,12 @@ var CommentsView = Backbone.View.extend({
     ].join('');
 
     this.$el.html(html);
+    // console.log(this.collection);
     /* Render each model in the collection as a list item (<li>).
      * Remember, we have the underscore functions: */
     this.$el.find('ul').append(this.collection.map(function(comment) {
       // YOUR CODE HERE
+      return '<li>' + comment.get('message') + '</li>'
     }));
 
     return this.$el;
@@ -134,7 +135,7 @@ var comments = new Comments(commentList);
 var commentsView = new CommentsView({ collection: comments });
 
 // Append it to the page (uncomment this when you are ready):
-// $('body').append(commentsView.render());
+$('body').append(commentsView.render());
     </script>
   </body>
 </html>
