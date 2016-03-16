@@ -34,7 +34,7 @@ lib/
 .floobit
 .floo
 .flooignore
-
+.DS_Store
 # Swap files (for the vim users in all of us)
 /**/*.swp
 
